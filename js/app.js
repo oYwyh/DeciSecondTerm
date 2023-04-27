@@ -14,14 +14,15 @@ overlay.forEach(lay => {
 
 const links = document.querySelectorAll('ul li')
 const sections = document.querySelectorAll('[data-lin="true"]')
-console.log(sections);
-console.log(sections.length);
 
 for (let i = 0; i < sections.length; i++) {
     links[i].addEventListener('click', (e) => {
         document.querySelector('.bars').classList.remove('open');
         document.querySelector('nav ul').classList.remove('active')
         sections.forEach(section => {
+            overlay.forEach(lay => {
+                lay.style.opacity = '0'
+            });
             section.classList.remove('active')
         });
         sections[i].classList.add('active')

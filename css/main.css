@@ -86,7 +86,7 @@ nav ul li:hover {
     transition: 0.3s;
 }
 .section.active .overlay {
-    opacity: 1;
+    opacity: 1 !important;
 }
 .section .container {
     z-index: 10;
@@ -307,7 +307,6 @@ form {
 
 .overlay {
     position: absolute;
-    opacity: 0;
     margin-top: -10rem;
     transition: 0.3s;
     z-index: 0;
