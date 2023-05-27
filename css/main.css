@@ -85,6 +85,10 @@ nav ul li:hover {
     flex-direction: column;
     transition: 0.3s;
 }
+.section.active {
+    transition: 0.3s;
+    background: #bb9ff66e !important;
+}
 .section.active .overlay {
     opacity: 1 !important;
 }
