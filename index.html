@@ -17,7 +17,7 @@
         <div class="main-title">
             Dynamic Web Page
         </div>
-        <section class="section" data-lin="true" data-sec-num="1" data-dir="ltr" data-bg="true">
+        <section class="section" id="section-1" data-lin="true" data-sec-num="1" data-dir="ltr" data-bg="true">
             <div class="overlay" data-dir="ltr" data-color="yellow">
                 <div class="circle"></div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="circle"></div>
             </div>
         </section>
-        <section class="section" data-lin="true" data-sec-num="2" data-dir="rtl" data-bg="false">
+        <section class="section" id="section-2" data-lin="true" data-sec-num="2" data-dir="rtl" data-bg="false">
             <div class="container">
                 <div class="title">Section2</div>
                 <hr>
@@ -59,7 +59,7 @@
             </div>
             </div>
         </section>
-        <section class="section" data-lin="true" data-sec-num="3" data-dir="ltr" data-bg="true">
+        <section class="section" id="section-3" data-lin="true" data-sec-num="3" data-dir="ltr" data-bg="true">
             <div class="overlay" data-dir="ltr" data-color="yellow">
                 <div class="circle"></div>
             </div>
@@ -83,7 +83,7 @@
                 <div class="circle"></div>
             </div>
         </section>
-        <section class="section" data-lin="true" data-sec-num="4" data-dir="rtl" data-bg="false">
+        <section class="section" id="section-4" data-lin="true" data-sec-num="4" data-dir="rtl" data-bg="false">
             <div class="container">
                 <div class="title">Section 4</div>
                 <hr>
@@ -101,7 +101,7 @@
             </div>
             </div>
         </section>
-        <section class="section" data-lin="true" data-sec-num="5" data-dir="ltr" data-bg="true">
+        <section class="section" id="section-5" data-lin="true" data-sec-num="5" data-dir="ltr" data-bg="true">
             <div class="overlay" data-dir="ltr" data-color="yellow">
                 <div class="circle"></div>
             </div>
@@ -125,9 +125,10 @@
                 <div class="circle"></div>
             </div>
         </section>
-        <div class="comments" data-lin="true">
+        <div class="comments" id="comments" data-lin="true">
             <div class="title">Comments</div>
             <hr>
+            <p class="error"></p>
             <form action="POST">
                 <div class="row">
                     <label for="name">Name: </label>
@@ -135,7 +136,7 @@
                 </div>
                 <div class="row">
                     <label for="email">Email: </label>
-                    <input type="text" placeholder="email" id="email" name="email">
+                    <input type="email" placeholder="email" id="email" name="email">
                 </div>
                 <div class="row">
                     <label for="pic">Picture: </label>

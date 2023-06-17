@@ -139,8 +139,15 @@ nav ul li:hover {
     }
     
 }
+.error {
+    color: red;
+    font-size: 20px;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: 1rem;
+}
 form {
-    margin-top: 3rem;
+    margin-top: 1rem;
     outline: none;
     padding: 2rem 3rem;
     border: 3px solid #46a191;
@@ -465,3 +472,4 @@ li.bars {
     right: 50px;
     bottom: 50px;
 }
+

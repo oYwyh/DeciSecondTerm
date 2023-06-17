@@ -61,11 +61,13 @@ for (let i = 0; i < sections.length; i++) {
         });
     })
 }
+// This Function Build Comment Box, it uses these parameters to set them as our value from localstorage and create them if there is value in the localstorage
 function cmntBuilder(user,email,pic,cmnt,date) {
     const box = document.createElement('div')
     box.classList.add('box')
     const img = document.createElement('img');
     if(picture.value != '') {
+        img.alt = 'error'
         img.src = `${picture.value}`;
     }else {
         img.src = pic;
@@ -117,12 +119,14 @@ function cmntBuilder(user,email,pic,cmnt,date) {
     box.appendChild(optionsDiv)
     commentFunc()
 }
+// This Function Generate Comment & Saving It To LocalStorage
 function generateComment() {
     const box = document.createElement('div')
     box.classList.add('box')
     const img = document.createElement('img');
     if(picture.value != '') {
         img.src = `${picture.value}`;
+        img.alt = 'error'
     }else {
         img.src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
     }
@@ -130,7 +134,6 @@ function generateComment() {
     column.classList.add('column')
     cmntVal = document.createElement('p');
     cmntVal.innerHTML =  `${comment.value}`;
-    console.log(comment.value);
     cmntVal.id = `comment_${comment.value}`;
     cmntVal.classList.add('comment_val')
     const emailVal = document.createElement('p');
@@ -190,6 +193,7 @@ function generateComment() {
     });
     localStorage.setItem('comments', JSON.stringify(comments));
 }
+// This Function To Edit The Comment as well as edits it value in localstorage
 function editFunc(editPrm) {
     editPrm.parentElement.parentElement.classList.remove('active')
     let cmnt = editPrm.parentElement.parentElement.parentElement.parentElement.children[1].children[2];
@@ -213,7 +217,6 @@ function editFunc(editPrm) {
         date.innerHTML = `${date.innerHTML} (Edited At ${realDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}. ${month[realDate.getMonth()]} ${realDate.getUTCDate()}, ${realDate.getFullYear()})`
         const comments = JSON.parse(localStorage.getItem('comments')) || [];
         const commentObj = comments.find(c => c.comment === cmnt.innerHTML);
-        console.log(commentObj);
         const index = comments.indexOf(commentObj);
         commentObj.comment = txt.value;
         commentObj.date = date.innerHTML;
@@ -221,6 +224,7 @@ function editFunc(editPrm) {
         cmnt.innerHTML = `${txt.value}`
     }
 }
+// This Function For Deleting Comment As Well As Deleting It From Localstorage
 function deleteComment(comment) {
     // Find the comment element that contains the comment value
     const commentElement = document.getElementById(`comment_${comment}`)
@@ -228,13 +232,11 @@ function deleteComment(comment) {
     // Remove the comment from local storage
     const comments = JSON.parse(localStorage.getItem('comments')) || [];
     const commentObj = comments.find(c => c.comment === comment);
-    console.log(commentObj);
     const index = comments.indexOf(commentObj);
-    console.log(index);
     comments.splice(index, 1);
     localStorage.setItem('comments', JSON.stringify(comments));
-}
-
+} 
+// This Function For Activate The Option For The Comment And Adds Edit And Delete Function To It
 function commentFunc() {
     const optToggle = document.querySelectorAll('.options .toggle')
     const options = document.querySelectorAll('.options .opt')
@@ -260,8 +262,8 @@ function commentFunc() {
     });
 }
 window.onload = () => {
+    // This Statement Check If there is comments column in localstorage then get the values from it  then loop on it to set values in varibles to pass them to cmntBuilder() func parameters
     if(localStorage.getItem("comments")) {
-        
         const localCmnt = JSON.parse(localStorage.getItem("comments"));
         if(localCmnt.length > 0 ) {
         localCmnt.forEach(cmnt => {
@@ -282,19 +284,27 @@ const email = document.getElementById('email')
 const comment = document.getElementById('comment')
 const picture = document.getElementById('pic')
 const cmntSec = document.querySelector('.comments')
+const error = document.querySelector('.error')
 let comment_val;
+// This Event Check If add comments box inputs empty or not if it's not empty it will generate the comment if it's empty it won't add the comment 
 submit.addEventListener('click', (e) => {
+        
     e.preventDefault();
     if(user.value == '' || email.value == '' || comment.value == ''){
-        alert(`Eneter The Values First`)
+        error.innerHTML = `Eneter The Values First`
+    }else if(!email.value.match(/@/)) {
+        error.innerHTML = `Email Must Contain @ Character`
     }else {
+        error.innerHTML = ``
         generateComment();
     }
 })
+// This Event For When Clicks On Humburger Toggle Activatr the Menu For Mobiles
 document.querySelector('.bars').addEventListener('click', (e) => {
     document.querySelector('.bars').classList.toggle('open');
     document.querySelector('nav ul').classList.toggle('active')
 })
+// This Function To Remove Fixed Position From Navbar When Not Scrolling
 function stoppedScrolling() {
     let last_y = window.scrollY;
     setTimeout(() => {
@@ -308,7 +318,7 @@ function stoppedScrolling() {
 }
 window.onscroll = () => {
     // stoppedScrolling();
-
+    // This Statement Check Of Window Y Axis Is Bigger Than Y = 300 Then Add Active Class On toTop Icon
     if(window.scrollY > 300) {
         toTop.classList.add('active')
     }else {
@@ -316,6 +326,7 @@ window.onscroll = () => {
     }
 }
 const toTop = document.querySelector('.top');
+// This Event For When Clicking On To Top Icon To Return Us All The Way Back To The Top
 toTop.addEventListener('click', () => {
     document.querySelector('.nav-bar').scrollIntoView({
         behavior: 'smooth'
