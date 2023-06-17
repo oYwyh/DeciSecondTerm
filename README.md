@@ -9,8 +9,8 @@ List Of Skills Needed In Javascript
    - Meida Query
 3. JavaScript
    - DOM
-     - Events
-       - LocalStorage
+   - Events
+   - LocalStorage
 
 <div id="header" align="center">
   <img src="https://mcit.gov.eg/images/tree/Digital%20Egypt%20Cubs%20Initiative.jpg">
