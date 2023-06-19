@@ -5,7 +5,7 @@ Project Is About Dynamic Landing Page That Contain Comments Section To Give Your
 ##
 This Project Uses `html` `css` `javascript`
 ##
-List Of Skills Needed In Javascript 
+List Of Skills Needed
 1. HTML
 2. CSS
    - Meida Query
